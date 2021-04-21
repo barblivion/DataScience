@@ -218,12 +218,65 @@ class MobileGame {
         }
 
         // mostra na tela o top 100 jogos
-        int x = 1;
+        int x = 1,
+        gameAction = 0,
+        gameStrategy = 0,
+        gameArcade = 0,
+        gameCasual = 0,
+        gameAdventure = 0,
+        gameSports = 0,
+        gameRacing = 0,
+        gameSimulation = 0,
+        gameTrivia = 0,
+        gameBoard = 0,
+        gamePuzzle = 0;
+
         for(int i = 0; i < 100; i++) {
+            // mostra título, categoria e quantidade de avaliações
             System.out.println(
                 x + ". " + topPopulares.get(i).getTitle() + " (" + topPopulares.get(i).getCategory() + ")" + " (" + topPopulares.get(i).getTotalRatings() + ")"
             );
             x++;
+
+            // soma quantidade de jogos em determinada categoria no top 100
+            if(topPopulares.get(i).getCategory().equals("GAME ACTION")) {
+                gameAction++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME STRATEGY")) {
+                gameStrategy++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME ARCADE")) {
+                gameArcade++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME CASUAL")) {
+                gameCasual++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME ADVENTURE")) {
+                gameAdventure++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME SPORTS")) {
+                gameSports++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME RACING")) {
+                gameRacing++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME SIMULATION")) {
+                gameSimulation++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME TRIVIA")) {
+                gameTrivia++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME BOARD")) {
+                gameBoard++;
+            } else if(topPopulares.get(i).getCategory().equals("GAME PUZZLE")) {
+                gamePuzzle++;
+            }
         }
+
+        // mostra na tela quantos jogos de cada categoria estão na lista
+        System.out.println("\n" + 
+            "GAME ACTION: " + gameAction + "\n" +
+            "GAME STRATEGY: " + gameStrategy + "\n" +
+            "GAME ARCADE: " + gameArcade + "\n" +
+            "GAME CASUAL: " + gameCasual + "\n" +
+            "GAME ADVENTURE: " + gameAdventure + "\n" +
+            "GAME SPORTS: " + gameSports + "\n" +
+            "GAME RACING: " + gameRacing + "\n" +
+            "GAME SIMULATION: " + gameSimulation + "\n" +
+            "GAME TRIVIA: " + gameTrivia + "\n" +
+            "GAME BOARD: " + gameBoard + "\n" +
+            "GAME PUZZLE: " + gamePuzzle
+        );
     }
 }
