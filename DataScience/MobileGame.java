@@ -164,7 +164,7 @@ class MobileGame {
     }
 
     // main
-    public static void main (String [] args) {
+    public static void main (String [] args) throws FileNotFoundException {
         File arquivoCSV = new File("./archive/android-games.csv");
         ArrayList<MobileGame> listaGames = new ArrayList<>();
         ArrayList<MobileGame> topPopulares = new ArrayList<>();
@@ -231,7 +231,17 @@ class MobileGame {
         gameBoard = 0,
         gamePuzzle = 0;
 
+        // cria arquivo .csv
+        FileOutputStream fos = new FileOutputStream("top_jogos.csv", true);
+        PrintWriter pw = new PrintWriter(fos);
+        
+        // escreve no arquivo
+        pw.println("Name, Category");
+
         for(int i = 0; i < 100; i++) {
+            // escreve informações dos jogos no arquivo
+            pw.println(topPopulares.get(i).getTitle() + ", " + topPopulares.get(i).getCategory());
+
             // mostra título, categoria e quantidade de avaliações
             System.out.println(
                 x + ". " + topPopulares.get(i).getTitle() + " (" + topPopulares.get(i).getCategory() + ")" + " (" + topPopulares.get(i).getTotalRatings() + ")"
@@ -278,5 +288,9 @@ class MobileGame {
             "GAME BOARD: " + gameBoard + "\n" +
             "GAME PUZZLE: " + gamePuzzle
         );
+
+        // fecha o arquivo
+        pw.close();
+        System.out.println("Arquivo .csv criado com sucesso.");
     }
 }
