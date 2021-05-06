@@ -236,11 +236,11 @@ class MobileGame {
         PrintWriter pw = new PrintWriter(fos);
         
         // escreve no arquivo
-        pw.println("Name, Category");
+        pw.println("Nome, Categoria, Avaliações");
 
         for(int i = 0; i < 100; i++) {
             // escreve informações dos jogos no arquivo
-            pw.println(topPopulares.get(i).getTitle() + ", " + topPopulares.get(i).getCategory());
+            pw.println(topPopulares.get(i).getTitle() + ", " + topPopulares.get(i).getCategory() + ", " + topPopulares.get(i).getTotalRatings());
 
             // mostra título, categoria e quantidade de avaliações
             System.out.println(
