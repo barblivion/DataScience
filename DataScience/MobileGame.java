@@ -211,7 +211,7 @@ class MobileGame {
         ArrayList<MobileGame> tmp = new ArrayList<MobileGame>(topPopulares);
         for(s = 1; s < topPopulares.size(); s++) {
             tmp.set(s, topPopulares.get(s));
-            for(p = s - 1; p >= 0 && tmp.get(s).getTotalRatings() > topPopulares.get(p).getTotalRatings(); p--) {
+            for(p = s - 1; p >= 0 && tmp.get(s).getGrowth60Days() > topPopulares.get(p).getGrowth60Days(); p--) {
                 topPopulares.set(p + 1, topPopulares.get(p));
             }
             topPopulares.set(p + 1, tmp.get(s));
@@ -236,15 +236,15 @@ class MobileGame {
         PrintWriter pw = new PrintWriter(fos);
         
         // escreve no arquivo
-        pw.println("Nome, Categoria, Avaliações");
+        pw.println("Nome, Categoria, Crescimento (últimos 60 dias)");
 
         for(int i = 0; i < 100; i++) {
             // escreve informações dos jogos no arquivo
-            pw.println(topPopulares.get(i).getTitle() + ", " + topPopulares.get(i).getCategory() + ", " + topPopulares.get(i).getTotalRatings());
+            pw.println(topPopulares.get(i).getTitle() + ", " + topPopulares.get(i).getCategory() + ", " + topPopulares.get(i).getGrowth60Days());
 
             // mostra título, categoria e quantidade de avaliações
             System.out.println(
-                x + ". " + topPopulares.get(i).getTitle() + " (" + topPopulares.get(i).getCategory() + ")" + " (" + topPopulares.get(i).getTotalRatings() + ")"
+                x + ". " + topPopulares.get(i).getTitle() + " (" + topPopulares.get(i).getCategory() + ")" + " (" + topPopulares.get(i).getGrowth60Days() + ")"
             );
             x++;
 
